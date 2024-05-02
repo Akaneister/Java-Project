@@ -1,0 +1,69 @@
+package model;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        InventoryManager inventoryManager = new InventoryManager();
+        Scanner myObj = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("__________________________");
+            System.out.println("\n 1. Add an item \n 2. View inventory \n 3. Update an item \n 4. Search \n 5. Exit");
+            System.out.println("__________________________");
+            String rep = myObj.nextLine();
+
+            switch (rep) {
+                case "1":
+                    InventoryItem newItem = InventoryItem.createItemFromInput(myObj);
+                    inventoryManager.addInventoryItem(newItem);
+                    System.out.println("Item added successfully!");
+                    break;
+                case "2":
+                    System.out.println("Viewing inventory...");
+                    printInventory(inventoryManager.viewInventory());
+                    break;
+                case "3":
+                    // Handle update item case
+                    System.out.println("Updating an item...");
+                    // Call a method to update an item
+                    break;
+                case "4":
+                    // Handle search case
+                    System.out.println("Searching...");
+                    // Call a method to search
+                    break;
+                case "5":
+                    System.out.println("Exiting...");
+                    return; // Exit the program
+                default:
+                    System.out.println("Invalid input. Please enter a valid option.");
+                    break;
+            }
+
+            // After each case, prompt user to return to main menu or exit
+            System.out.println("\nDo you want to return to the main menu? (Y/N)");
+            String choice = myObj.nextLine();
+            if (!choice.equalsIgnoreCase("Y")) {
+                System.out.println("Exiting...");
+                break; // Exit the loop if user chooses not to return to main menu
+            }
+        }
+    }
+
+    public static void printInventory(List<InventoryItem> inventory) {
+        if (inventory.isEmpty()) {
+            System.out.println("Inventory is empty.");
+        } else {
+            System.out.println("Inventory Items:");
+            for (InventoryItem item : inventory) {
+                System.out.println("Name: " + item.getName());
+                System.out.println("Category: " + item.getCategory());
+                System.out.println("Price: $" + item.getPrice());
+                System.out.println("Quantity: " + item.getQuantity());
+                System.out.println("-------------------------");
+            }
+        }
+    }
+}
