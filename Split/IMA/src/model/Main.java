@@ -26,6 +26,7 @@ public class Main {
             String rep = myObj.nextLine();
 
             switch (rep) {
+            //Add an item
                 case "1":
                     do {
                         InventoryItem newItem = InventoryItem.createItemFromInput(myObj);
@@ -40,6 +41,7 @@ public class Main {
                     } while (rep.equalsIgnoreCase("Y"));
                     break;
                 case "2":
+                	//view inventory
                     System.out.println("Viewing inventory...");
                     printInventoryByCategory(inventoryManager.viewInventory());
                     break;
