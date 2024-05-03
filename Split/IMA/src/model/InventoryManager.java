@@ -11,7 +11,7 @@ public class InventoryManager {
         this.categories = new ArrayList<>();
     }
 
-    // Method for atdding inventory items
+    // Method for adding inventory items
     public void addInventoryItem(InventoryItem newItem) {
         boolean itemExists = false;
         for (int i = inventory.size() - 1; i >= 0; i--) {
